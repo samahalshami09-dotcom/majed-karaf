@@ -815,3 +815,66 @@ Pipeline Stage Changed
 |---|---|
 | W3 → **Draft** | ✅ — عطل القفل لم يعد يصيب فرصاً حقيقية |
 | `Nurture Active = No` على `63oh6ELZtHHN6AUsY2jX` | ✅ — الفرصة صالحة لإعادة الاختبار |
+
+---
+
+## 2026-09-04 (مساءً) — Go To مُثبَت · وتصحيحان في الفهم
+
+**المنفّذ: إضافة Claude in Chrome** — نجحت في فتح المحرّر والقراءة داخل الـiframe. تُضاف إلى ChatGPT كأداة صالحة لمهام المحرّر.
+
+### ✅ فرع NO — مُصلَح ومُثبَت بعد Hard Refresh
+
+| العقدة | العدد |
+|---|---|
+| Match Guard · SMS · Update opportunity · Go to · Unlock · Wait | **1 لكلٍّ** — لا تكرار |
+
+**المسار:** `Match Guard → NO → Go to → (خط منقّط) → Unlock — Set Nurture Active = No → END`
+
+**علامة التحذير اختفت بعد Hard Refresh** — كانت حالة لوحة لا عطل ربط. تأكيد جديد للقاعدة المسجّلة.
+
+> 📌 لوحة عقدة `Go to` **لا تعرض الوجهة بداخلها** — تُقرأ بصرياً من الخط المنقّط فقط. تُسجَّل كخاصية واجهة حتى لا تُقرأ مستقبلاً كعطل.
+
+### 🔴 تصحيح 1 — لا يوجد تغليف `data.`
+
+الاستجابة المحفوظة في العقدة **مفاتيحها في الجذر**. إذاً `{"status":200,"data":{…}}` في سجل الـEnrollment هو **غلاف GHL للسجل** (`status` = رمز HTTP · `data` = جسم الرد)، لا تغليف من المحرّك. **المحرّك يرجّع كائناً مسطّحاً.**
+
+**الأثر:** المسارات المتوقّعة `match_found` لا `data.match_found`. **التحذير السابق في التوثيق كان خاطئاً ويُلغى.**
+
+### 🔴 تصحيح 2 — غياب Response Mapping ليس دليل غياب القيم
+
+أُبلغ أن العقدة لا تحتوي حقل ربط استجابة. **هذا سلوك GHL الطبيعي:** عند تفعيل `Save response from this Webhook` تصبح المفاتيح متاحة **في العقد اللاحقة** — في منتقي حقول ④ وفي نص ⑤ — لا داخل عقدة الويبهوك.
+
+**لم يُفحص المنتقي في ④ و⑤ بعد. هذه هي القراءة الحاسمة المتبقية.**
+
+### 🎯 العيّنة المحفوظة كافية — لا حاجة لإعادة التقاط
+
+`Save response from this Webhook` مفعّل · استجابة محفوظة `200` بتاريخ **Mon, 31 Aug 2026 13:06:16 GMT**.
+
+**مفاتيحها (في الجذر):**
+
+```
+status · dry_run · source · opportunity_id · location_slug
+matched_count · candidate_count_after_filters · selected_count
+selected_price_field · checked_records_count
+next_match_id · next_match_name · next_match_type · next_match_price
+next_match_district · next_match_area · match_found
+association_would_create { opportunity_id · project_id }
+```
+
+**تحتوي كل مفتاح مطلوب:** `match_found` · `next_match_id` · `next_match_name` · `next_match_type` · `next_match_price` · `next_match_district`.
+
+المفاتيح الزائدة (`dry_run` · `status: DRY_RUN` · `association_would_create`) **لا تُستعمل ببساطة**. والمنتقي يُبنى من العيّنة المحفوظة ⟵ **زر `Test again` غير مطلوب** (وهو على الأرجح يرجّع نفس الـ400).
+
+### ✅ لغز `DRY_RUN` مغلق نهائياً
+
+`"status":"DRY_RUN"` و`"dry_run":true` هما **العيّنة المحفوظة نفسها** القابعة في العقدة منذ 31 آب — **لا سلوك حيّ**. التشغيل الحقيقي رجّع `MATCHED` بلا أي من المفتاحين.
+
+### ⚠️ بند يُسجَّل قبل أن يُنسى — وجهة الـGo To تتغيّر مع السلسلة ×8
+
+`NO → Unlock → END` **سليم مؤقتاً** لأن المجموعة واحدة. عند بناء السلسلة ×8:
+
+**وجهة الـGo To تتحوّل من `Unlock` إلى `Wait` التالية**، ويبقى `Unlock` في نهاية السلسلة فقط. **بدون ذلك تتوقّف الرعاية عند أول لا-تطابق — و73% من المخزون خارج المطابقة.**
+
+### الخطوة التالية
+
+قراءة منتقي الحقول في ④ Match Guard وفي نص ⑤ SMS: هل تظهر مفاتيح استجابة الويبهوك؟ وبأي صيغة حرفية؟
