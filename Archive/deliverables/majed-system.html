@@ -1,0 +1,674 @@
+<title>مخطط ماجد كرف</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ink:#0d2137; --ink-2:#16324f;
+  --paper:#f2f0ea; --surface:#ffffff; --surface-2:#f7f5f0;
+  --line:#d3cec2; --line-strong:#b3ac9c;
+  --text:#152233; --text-2:#4d5b6b; --text-3:#7b8794;
+  --brass:#a8741a; --brass-soft:#f3e6cc;
+  --ok:#2f6b4f; --ok-soft:#dcece3;
+  --warn:#8a5a12; --warn-soft:#f7e9cf;
+  --crit:#9c2b25; --crit-soft:#f6dedb;
+  --idle:#5a6472; --idle-soft:#e6e6e4;
+  --grid:rgba(21,34,51,.055);
+  --shadow:0 1px 2px rgba(13,33,55,.06),0 8px 24px -12px rgba(13,33,55,.18);
+  --rad:10px;
+  --f-disp:"Alexandria","IBM Plex Sans Arabic",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans Arabic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#081726; --surface:#0e2135; --surface-2:#132a41;
+    --line:#1e3b58; --line-strong:#2d5379;
+    --text:#e2ecf5; --text-2:#9fb4c9; --text-3:#6e8399;
+    --brass:#e0ab52; --brass-soft:#2a2113;
+    --ok:#63c295; --ok-soft:#102b20;
+    --warn:#e0ab52; --warn-soft:#2c2211;
+    --crit:#f08279; --crit-soft:#33130f;
+    --idle:#8b9bab; --idle-soft:#17293b;
+    --grid:rgba(160,196,230,.055);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#081726; --surface:#0e2135; --surface-2:#132a41;
+  --line:#1e3b58; --line-strong:#2d5379;
+  --text:#e2ecf5; --text-2:#9fb4c9; --text-3:#6e8399;
+  --brass:#e0ab52; --brass-soft:#2a2113;
+  --ok:#63c295; --ok-soft:#102b20;
+  --warn:#e0ab52; --warn-soft:#2c2211;
+  --crit:#f08279; --crit-soft:#33130f;
+  --idle:#8b9bab; --idle-soft:#17293b;
+  --grid:rgba(160,196,230,.055);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; direction:rtl; font-family:var(--f-body); color:var(--text);
+  background:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;
+  font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 72px}
+
+/* ---------- header ---------- */
+header.top{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:40}
+.top-in{max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:11px;margin-inline-end:auto}
+.mark .glyph{width:34px;height:34px;border:1.5px solid var(--brass);border-radius:7px;display:grid;place-items:center;font-family:var(--f-mono);font-size:13px;color:var(--brass);letter-spacing:-.5px}
+.mark h1{font-family:var(--f-disp);font-size:19px;font-weight:700;margin:0;letter-spacing:-.2px}
+.mark .sub{font-size:12px;color:var(--text-3);margin:0;font-family:var(--f-mono)}
+.themebtn{font:inherit;font-size:12.5px;color:var(--text-2);background:var(--surface-2);border:1px solid var(--line);border-radius:7px;padding:6px 12px;cursor:pointer}
+.themebtn:hover{border-color:var(--line-strong);color:var(--text)}
+.themebtn:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+
+/* ---------- tabs ---------- */
+nav.tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:63px;z-index:39;scrollbar-width:thin}
+.tabs-in{max-width:1240px;margin:0 auto;padding:0 20px;display:flex;gap:4px;width:100%}
+.tab{font:inherit;font-size:13.5px;font-weight:500;color:var(--text-2);background:none;border:0;border-bottom:2px solid transparent;padding:11px 13px;cursor:pointer;white-space:nowrap}
+.tab:hover{color:var(--text)}
+.tab[aria-selected="true"]{color:var(--brass);border-bottom-color:var(--brass)}
+.tab:focus-visible{outline:2px solid var(--brass);outline-offset:-2px}
+
+/* ---------- generic ---------- */
+section.panel{padding-top:30px}
+section.panel[hidden]{display:none!important}
+h2{font-family:var(--f-disp);font-size:22px;font-weight:700;margin:34px 0 6px;letter-spacing:-.3px;text-wrap:balance}
+h2:first-child{margin-top:0}
+h3{font-family:var(--f-disp);font-size:16px;font-weight:500;margin:26px 0 8px;text-wrap:balance}
+p{margin:0 0 12px;max-width:74ch;color:var(--text-2)}
+p strong,li strong{color:var(--text);font-weight:600}
+.lede{font-size:16.5px;color:var(--text-2);max-width:70ch}
+.eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 4px}
+code,.mono{font-family:var(--f-mono);font-size:.88em;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;direction:ltr;display:inline-block;color:var(--text)}
+ul{margin:0 0 14px;padding-inline-start:20px;color:var(--text-2)}
+li{margin-bottom:5px}
+
+/* ---------- status strip ---------- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;margin:18px 0 6px}
+.tile{background:var(--surface);padding:13px 15px}
+.tile .k{font-size:11.5px;color:var(--text-3);margin:0 0 5px;font-weight:500}
+.tile .v{font-family:var(--f-disp);font-size:23px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;margin:0}
+.tile .n{font-size:11.5px;color:var(--text-3);margin:3px 0 0}
+.tile .v.ok{color:var(--ok)} .tile .v.warn{color:var(--warn)} .tile .v.crit{color:var(--crit)} .tile .v.brass{color:var(--brass)}
+
+/* ---------- pills ---------- */
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:2.5px 9px;border-radius:20px;white-space:nowrap;line-height:1.6}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.crit{background:var(--crit-soft);color:var(--crit)}
+.pill.idle{background:var(--idle-soft);color:var(--idle)}
+.pill.brass{background:var(--brass-soft);color:var(--brass)}
+
+/* ---------- map ---------- */
+.mapwrap{overflow-x:auto;padding:4px 0 8px;margin-bottom:6px}
+.plane{border:1px solid var(--line);border-radius:var(--rad);background:var(--surface);padding:14px;margin-bottom:12px}
+.plane > .phead{display:flex;align-items:baseline;gap:9px;margin-bottom:11px}
+.plane > .phead .t{font-family:var(--f-disp);font-size:14.5px;font-weight:500}
+.plane > .phead .d{font-size:12px;color:var(--text-3)}
+.row{display:flex;align-items:stretch;gap:0;flex-wrap:nowrap;min-width:min-content}
+.node{
+  font:inherit;text-align:start;cursor:pointer;flex:1 1 0;min-width:132px;
+  background:var(--surface-2);border:1px solid var(--line);border-radius:8px;
+  padding:9px 11px;display:flex;flex-direction:column;gap:3px;color:var(--text);
+  transition:border-color .12s,transform .12s;
+}
+.node:hover{border-color:var(--brass);transform:translateY(-1px)}
+.node:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.node[aria-current="true"]{border-color:var(--brass);background:var(--brass-soft);box-shadow:inset 0 0 0 1px var(--brass)}
+.node .nt{font-size:13px;font-weight:600;line-height:1.35}
+.node .nd{font-size:11.5px;color:var(--text-3);line-height:1.4}
+.node .nid{font-family:var(--f-mono);font-size:10px;color:var(--text-3)}
+.arrow{align-self:center;flex:0 0 26px;text-align:center;color:var(--line-strong);font-size:14px;user-select:none}
+.stack{display:flex;flex-direction:column;gap:8px;flex:1 1 0;min-width:132px}
+
+/* ---------- detail panel ---------- */
+.detail{border:1px solid var(--line-strong);border-radius:var(--rad);background:var(--surface);box-shadow:var(--shadow);padding:20px;margin-top:6px}
+.detail .dhead{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:13px;margin-bottom:14px}
+.detail h3.dt{font-family:var(--f-disp);font-size:19px;font-weight:700;margin:0;flex:1 1 auto;min-width:200px}
+.detail .dsub{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3);width:100%;margin:0}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.dblock .bl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin:0 0 5px}
+.dblock p{margin:0 0 8px;font-size:14px}
+.dblock ul{font-size:14px;margin-bottom:8px}
+.hint{font-size:12.5px;color:var(--text-3);margin-top:12px}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--rad);margin:0 0 16px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:480px}
+th,td{text-align:start;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--surface-2);font-weight:600;font-size:12.5px;color:var(--text-2);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.num,th.num{font-variant-numeric:tabular-nums;font-family:var(--f-mono);font-size:12.5px}
+
+/* ---------- callouts ---------- */
+.note{border-inline-start:3px solid var(--line-strong);padding:11px 14px;border-radius:0 8px 8px 0;background:var(--surface);margin:0 0 16px;font-size:14px;color:var(--text-2)}
+.note.crit{border-inline-start-color:var(--crit);background:var(--crit-soft)}
+.note.warn{border-inline-start-color:var(--warn);background:var(--warn-soft)}
+.note.ok{border-inline-start-color:var(--ok);background:var(--ok-soft)}
+.note p{margin:0 0 7px;color:inherit;max-width:none}
+.note p:last-child{margin:0}
+.note .lbl{font-weight:700;color:var(--text)}
+
+/* ---------- chain ---------- */
+.chain{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px}
+.gstep{flex:0 0 auto;min-width:108px;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:9px 11px;text-align:center}
+.gstep .gn{font-family:var(--f-disp);font-size:15px;font-weight:700}
+.gstep .gd{font-size:11px;color:var(--text-3);font-variant-numeric:tabular-nums}
+.gstep .gw{font-family:var(--f-mono);font-size:11px;color:var(--brass);margin-top:3px}
+
+/* ---------- timeline ---------- */
+.tl{border-inline-start:2px solid var(--line);padding-inline-start:18px;margin:0 0 8px}
+.ev{position:relative;padding-bottom:20px}
+.ev::before{content:"";position:absolute;inset-inline-start:-24px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--line-strong);border:2px solid var(--surface)}
+.ev.crit::before{background:var(--crit)} .ev.ok::before{background:var(--ok)} .ev.brass::before{background:var(--brass)}
+.ev .d{font-family:var(--f-mono);font-size:11.5px;color:var(--text-3)}
+.ev .t{font-weight:600;font-size:14.5px;margin:1px 0 3px}
+.ev p{margin:0;font-size:13.5px}
+
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+footer{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;font-size:12.5px;color:var(--text-3)}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div class="mark">
+      <div class="glyph">MK</div>
+      <div>
+        <h1>نظام ماجد كرف</h1>
+        <p class="sub">jo8GkEPOGeRVWN5khioH · W3 v40 · 2026-09-06</p>
+      </div>
+    </div>
+    <span class="pill warn">W3 draft — مكتمل البناء، لم يُنشر</span>
+    <button class="themebtn" id="themebtn" type="button">تبديل السمة</button>
+  </div>
+</header>
+
+<nav class="tabs"><div class="tabs-in" role="tablist">
+  <button class="tab" role="tab" aria-selected="true" data-p="map">الخريطة التفاعلية</button>
+  <button class="tab" role="tab" aria-selected="false" data-p="w3">W3 عقدة بعقدة</button>
+  <button class="tab" role="tab" aria-selected="false" data-p="data">البيانات والحقول</button>
+  <button class="tab" role="tab" aria-selected="false" data-p="engine">المحرّك والمال</button>
+  <button class="tab" role="tab" aria-selected="false" data-p="log">السجل والدروس</button>
+  <button class="tab" role="tab" aria-selected="false" data-p="open">المتبقّي والتعارضات</button>
+</div></nav>
+
+<div class="wrap">
+
+<!-- ============ MAP ============ -->
+<section class="panel" id="p-map">
+  <p class="eyebrow">اضغط أي عقدة لقراءة وظيفتها وأهميتها</p>
+  <h2>خريطة النظام</h2>
+  <p class="lede">جهتان تُغذّيان مخزوناً واحداً، ومحرّك واحد يطابق، وحلقتان تُبقيان المخزون طازجاً. <strong>HighLevel يشغّل ويربط · المحرّك يحسب · الإنسان يقرّر في المراحل الحساسة.</strong></p>
+
+  <div class="tiles">
+    <div class="tile"><p class="k">حقول المطابقة</p><p class="v ok">14/14</p><p class="n">مؤكّدة</p></div>
+    <div class="tile"><p class="k">جسر المناطق</p><p class="v ok">424<span style="font-size:14px;color:var(--text-3)">/429</span></p><p class="n">district_slug</p></div>
+    <div class="tile"><p class="k">تغطية أسعار USD</p><p class="v warn">28%</p><p class="n">121 من 429</p></div>
+    <div class="tile"><p class="k">مجموعات W3</p><p class="v ok">8/8</p><p class="n">مبنية ومربوطة</p></div>
+    <div class="tile"><p class="k">قناة واتساب</p><p class="v ok">تعمل</p><p class="n">المزوّد الافتراضي والوحيد</p></div>
+    <div class="tile"><p class="k">قبل النشر</p><p class="v crit">2</p><p class="n">تشغيل تحقّق · بوت الاستقبال</p></div>
+  </div>
+
+  <div class="mapwrap">
+    <div class="plane">
+      <div class="phead"><span class="t">جهة العرض</span><span class="d">إدخال المخزون من المورّدين</span></div>
+      <div class="row">
+        <button class="node" data-n="supplier"><span class="nt">مورّد</span><span class="nd">بروكر · مالك · وكالة · مطوّر</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="reception"><span class="nt">وكيل الاستقبال</span><span class="nd">يصنّف ويوجّه</span><span class="nid">agent Reception</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="intake"><span class="nt">وكيل الإدخال</span><span class="nd">جلسة جمع معلومات</span></button>
+      </div>
+    </div>
+
+    <div class="plane">
+      <div class="phead"><span class="t">المخزون والحساب</span><span class="d">مصدر الحقيقة وطبقة الأرقام</span></div>
+      <div class="row">
+        <div class="stack">
+          <button class="node" data-n="projects"><span class="nt">Projects</span><span class="nd">مصدر البحث الافتراضي</span><span class="nid">429 سجل</span></button>
+          <button class="node" data-n="property"><span class="nt">Property</span><span class="nd">وحدات وResale</span><span class="nid">327 سجل</span></button>
+        </div>
+        <span class="arrow">←</span>
+        <button class="node" data-n="priceupd"><span class="nt">محدّث الأسعار</span><span class="nd">TRY → USD · كرون يومي</span><span class="nid">majed-price-updater</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="engine"><span class="nt">محرّك المطابقة</span><span class="nd">يفلتر · يرتّب · يربط</span><span class="nid">v3.0.0 · 922430af</span></button>
+      </div>
+    </div>
+
+    <div class="plane">
+      <div class="phead"><span class="t">جهة الطلب</span><span class="d">رحلة المشتري عبر البايبلاين</span></div>
+      <div class="row">
+        <button class="node" data-n="leadin"><span class="nt">Lead In</span><span class="nd">دخول المشتري</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="callDone"><span class="nt">Call Done</span><span class="nd">ماجد يملأ الاحتياجات</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="active"><span class="nt">Active — Nurture</span><span class="nd">زر التشغيل</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="unit"><span class="nt">Unit Interest</span><span class="nd">اهتمام بخيار</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="verify"><span class="nt">Verifying</span><span class="nd">تأكيد التوفّر</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="viewing"><span class="nt">Viewing → Closed</span><span class="nd">تسليم بشري</span></button>
+      </div>
+    </div>
+
+    <div class="plane">
+      <div class="phead"><span class="t">طبقة الأتمتة</span><span class="d">W1 → W6 · الحالة الحقيقية</span></div>
+      <div class="row">
+        <button class="node" data-n="w1"><span class="nt">W1</span><span class="nd">بوابة الجودة</span><span class="nid">draft ×2 نسخ</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="w2"><span class="nt">W2</span><span class="nd">المطابقة</span><span class="nid">draft</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="w3"><span class="nt">W3</span><span class="nd">التسليم والرعاية</span><span class="nid">draft · v40</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="w4"><span class="nt">W4</span><span class="nd">ردّ العميل</span><span class="nid">غير موجود</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="w5"><span class="nt">W5</span><span class="nd">تحقّق التوفّر</span><span class="nid">غير موجود</span></button>
+        <span class="arrow">←</span>
+        <button class="node" data-n="w6"><span class="nt">W6</span><span class="nd">التسليم البشري</span><span class="nid">غير موجود</span></button>
+      </div>
+    </div>
+
+    <div class="plane">
+      <div class="phead"><span class="t">حلقتا التحقّق</span><span class="d">ما يمنع إرسال عقار غير موجود</span></div>
+      <div class="row">
+        <button class="node" data-n="loop1"><span class="nt">حلقة 1 — عند الاهتمام</span><span class="nd">مراسلة جهة واحدة كل 6 ساعات</span></button>
+        <span class="arrow">·</span>
+        <button class="node" data-n="loop2"><span class="nt">حلقة 2 — دورية</span><span class="nd">إعادة تأكيد المخزون وإيقاف القديم</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail" id="detail" tabindex="-1"></div>
+</section>
+
+<!-- ============ W3 ============ -->
+<section class="panel" id="p-w3" hidden>
+  <p class="eyebrow">5e7af32d-5378-42ef-bdb2-f95daf559e60 · v40</p>
+  <h2>W3 — تسليم الخيارات والرعاية</h2>
+  <p class="lede">ثماني مجموعات متطابقة على 28 يوماً. كل مجموعة تستدعي المحرّك، تكتب النتيجة على الفرصة، وترسل — أو تنتظر الجولة التالية. <strong>القفل يُرفع مرة عند الدخول ويُفكّ عند كل مخرج.</strong></p>
+
+  <div class="tiles">
+    <div class="tile"><p class="k">مجموعات</p><p class="v ok">8</p><p class="n">9 عقد لكل مجموعة</p></div>
+    <div class="tile"><p class="k">عمليات ربط الاستجابة</p><p class="v brass">49</p><p class="n">7 × (حارس + 6 حقول)</p></div>
+    <div class="tile"><p class="k">الإيقاع</p><p class="v">4<span style="font-size:14px;color:var(--text-3)"> أيام</span></p><p class="n">8 إرسالات · 28 يوماً</p></div>
+    <div class="tile"><p class="k">نافذة الإرسال</p><p class="v">09–21</p><p class="n">7 أيام · إسطنبول +03</p></div>
+  </div>
+
+  <h3>تشريح المجموعة الواحدة</h3>
+  <p class="eyebrow">اضغط أي عقدة</p>
+  <div class="mapwrap"><div class="plane"><div class="row">
+    <button class="node" data-n="stageguard"><span class="nt">Stage Guard</span><span class="nd">هل ما زال في المرحلة؟</span></button>
+    <span class="arrow">←</span>
+    <button class="node" data-n="webhook"><span class="nt">Custom Webhook</span><span class="nd">نداء المحرّك</span><span class="nid">#2 · #3 · #4 …</span></button>
+    <span class="arrow">←</span>
+    <button class="node" data-n="writematch"><span class="nt">Write Match Result</span><span class="nd">6 حقول من الاستجابة</span></button>
+    <span class="arrow">←</span>
+    <button class="node" data-n="matchguard"><span class="nt">Match Guard</span><span class="nd">response › match_found</span></button>
+    <span class="arrow">←</span>
+    <div class="stack">
+      <button class="node" data-n="sms"><span class="nt">YES → SMS</span><span class="nd">رسالة واتساب</span></button>
+      <button class="node" data-n="updateopp"><span class="nt">Update Opportunity</span><span class="nd">إضافة على Sent IDs</span></button>
+      <button class="node" data-n="goto"><span class="nt">NO → Go to</span><span class="nd">قفزة إلى Wait</span></button>
+    </div>
+    <span class="arrow">←</span>
+    <button class="node" data-n="wait"><span class="nt">Wait 4 days</span><span class="nd">إلى المجموعة التالية</span></button>
+  </div></div></div>
+
+  <h3>سلسلة المجموعات الثماني</h3>
+  <p>الرقم <code>#N</code> عدّاد إنشاء لا ترتيب — <strong>التسلسل الفعلي غير تصاعدي</strong>، وويبهوك كل مجموعة يُقرأ من داخلها لا من موقعها.</p>
+  <div class="chain">
+    <div class="gstep"><div class="gn">1</div><div class="gd">اليوم 0</div><div class="gw">#2</div></div>
+    <div class="gstep"><div class="gn">2</div><div class="gd">اليوم 4</div><div class="gw">#3</div></div>
+    <div class="gstep"><div class="gn">3</div><div class="gd">اليوم 8</div><div class="gw">#4</div></div>
+    <div class="gstep"><div class="gn">4</div><div class="gd">اليوم 12</div><div class="gw">#6</div></div>
+    <div class="gstep"><div class="gn">5</div><div class="gd">اليوم 16</div><div class="gw">#7</div></div>
+    <div class="gstep"><div class="gn">6</div><div class="gd">اليوم 20</div><div class="gw">#5</div></div>
+    <div class="gstep"><div class="gn">7</div><div class="gd">اليوم 24</div><div class="gw">#18</div></div>
+    <div class="gstep"><div class="gn">8</div><div class="gd">اليوم 28</div><div class="gw">#19</div></div>
+  </div>
+
+  <h3>عقد القفل</h3>
+  <div class="mapwrap"><div class="plane"><div class="row">
+    <button class="node" data-n="l1"><span class="nt">L1 — Nurture Active?</span><span class="nd">هل نسخة أخرى تعمل؟</span></button>
+    <span class="arrow">←</span>
+    <button class="node" data-n="l2"><span class="nt">L2 — Set = Yes</span><span class="nd">رفع القفل</span></button>
+    <span class="arrow">←</span>
+    <button class="node" data-n="unlock"><span class="nt">Unlock — Set = No</span><span class="nd">فكّ القفل عند كل مخرج</span></button>
+    <span class="arrow">←</span>
+    <button class="node" data-n="endunlock"><span class="nt">Go to — Unlock (End)</span><span class="nd">نهاية السلسلة</span></button>
+  </div></div></div>
+
+  <div class="detail" id="detail2" tabindex="-1"></div>
+
+  <h3>إعدادات الـworkflow</h3>
+  <div class="tw"><table>
+    <tr><th>الإعداد</th><th>القيمة</th><th>لماذا</th></tr>
+    <tr><td>التريغر</td><td>Pipeline Stage Changed → <code>Active — Nurture Running</code></td><td>المطابقة لا تبدأ قبل أن يعتمد ماجد الاحتياجات وينقل المرحلة</td></tr>
+    <tr><td>Allow re-entry</td><td class="mono">ON</td><td>العميل قد يعود للرعاية بعد خيار مرفوض</td></tr>
+    <tr><td>Allow multiple opportunities</td><td class="mono">ON</td><td>جهة اتصال واحدة قد تحمل أكثر من طلب</td></tr>
+    <tr><td>Stop on response</td><td class="mono">OFF</td><td>الإيقاف عند الردّ مسؤولية W4 — وهو غير مبني بعد</td></tr>
+    <tr><td>نافذة الإرسال</td><td>09:00–21:00 · 7 أيام · إسطنبول +03</td><td>تحكم <strong>وقت الإرسال</strong> لا وقت الموعد؛ والنص دعوة للردّ لا مكالمة فورية</td></tr>
+  </table></div>
+
+  <div class="note warn"><p><span class="lbl">تعارض غير محسوم — الإيقاع.</span> الـBlueprint يحدّد جدولاً غير منتظم: اليوم 0 (خياران) · 3 · 5 · 7 · 14 · 21 · 28 ثم خيار كل 15 يوماً. <strong>المبني فعلياً: 8 إرسالات بفاصل 4 أيام متساوٍ.</strong> الفرق حقيقي ويحتاج قراراً — تغييره الآن أرخص بكثير من تغييره بعد النشر.</p></div>
+</section>
+
+<!-- ============ DATA ============ -->
+<section class="panel" id="p-data" hidden>
+  <h2>نموذج البيانات</h2>
+  <p class="lede">لكل معلومة <strong>حقل رسمي واحد</strong> تعتمد عليه الأتمتة. الحقول القديمة تبقى Legacy ولا تُحذف قبل نسخة احتياطية.</p>
+
+  <div class="tw"><table>
+    <tr><th>الكائن</th><th>الدور</th><th>ملاحظة حاكمة</th></tr>
+    <tr><td><strong>Contact</strong></td><td>هوية الشخص وتواصله وخصائصه طويلة الأمد</td><td><strong>ليس</strong> مصدر شروط المطابقة</td></tr>
+    <tr><td><strong>Opportunity</strong></td><td>طلب المشتري المحدّد</td><td>المصدر الرسمي لشروط المطابقة وحالة الرحلة</td></tr>
+    <tr><td><strong>Projects</strong></td><td>مشاريع بأنواع وحدات وأسعار بداية</td><td>مصدر البحث الافتراضي</td></tr>
+    <tr><td><strong>Property</strong></td><td>وحدة فعلية أو عقار إعادة بيع</td><td>مصدر البحث عند <code>Resale</code> فقط</td></tr>
+  </table></div>
+
+  <h3>حقول الطلب — مدخلات المطابقة</h3>
+  <p>هذه الثمانية تُرسَل إلى المحرّك في جسم كل طلب. <strong>لا تُلمس أثناء أي اختبار.</strong></p>
+  <div class="tw"><table>
+    <tr><th>الحقل</th><th>الوظيفة</th></tr>
+    <tr><td><code>budget_max</code></td><td>سقف الميزانية — يُتحقَّق منه أولاً؛ إن كان صفراً يرفض المحرّك الطلب</td></tr>
+    <tr><td><code>budget_currency</code></td><td>عملة الميزانية — المقارنة تتم بالدولار</td></tr>
+    <tr><td><code>property_location_interest</code></td><td>المنطقة المطلوبة — تُترجم إلى <code>district_slug</code></td></tr>
+    <tr><td><code>property_type</code></td><td>نوع الوحدة — يحدّد حقل السعر المستعمل</td></tr>
+    <tr><td><code>client_goal</code></td><td>سكن · استثمار · إقامة · جنسية — يضيف فلتر أهلية</td></tr>
+    <tr><td><code>property_source</code></td><td>Project (افتراضي) أو Resale</td></tr>
+    <tr><td><code>sent_project_ids</code></td><td>قائمة الاستبعاد — ما أُرسل فعلاً</td></tr>
+    <tr><td><code>rejected_project_ids</code></td><td>قائمة الاستبعاد — ما رفضه العميل</td></tr>
+  </table></div>
+
+  <h3>حقول النتيجة — يكتبها W3 لا المحرّك</h3>
+  <div class="note crit"><p><span class="lbl">اعتقاد سقط.</span> كان التوثيق يقول إن المحرّك يكتب هذه الحقول على الفرصة. <strong>النسخة الحالية لا تكتبها إطلاقاً</strong> — رُوقبت 3 دقائق ولم تظهر. ولهذا وُجدت عقدة <code>Write Match Result</code>. المحرّك <em>يكتب</em> على GHL فعلاً (ينشئ الـAssociation) — الحقول المخصّصة تحديداً هي التي لا تُكتب.</p></div>
+  <div class="tw"><table>
+    <tr><th>الحقل</th><th>النوع</th><th>المصدر</th></tr>
+    <tr><td><code>match_found</code></td><td>RADIO — Yes/No</td><td><code>response › match_found</code></td></tr>
+    <tr><td><code>next_match_id</code></td><td>نص</td><td><code>response › next_match_id</code></td></tr>
+    <tr><td><code>next_match_name</code></td><td>نص</td><td><code>response › next_match_name</code></td></tr>
+    <tr><td><code>next_match_type</code></td><td>نص</td><td><code>response › next_match_type</code></td></tr>
+    <tr><td><code>next_match_price</code></td><td>رقمي</td><td><code>response › next_match_price</code></td></tr>
+    <tr><td><code>next_match_district</code></td><td>نص</td><td><code>response › next_match_district</code></td></tr>
+    <tr><td><code>nurture_active</code></td><td>RADIO — Yes/No</td><td>قفل التزامن · <code>PoxnDg8w2iJq4NrC2eLB</code></td></tr>
+  </table></div>
+
+  <div class="note"><p><span class="lbl">حقول RADIO لا تُفرَّغ من الواجهة.</span> <code>Match Found</code> و<code>Nurture Active</code> يعرضان Yes/No فقط بلا خيار تفريغ. عند تصفير فرصة اختبار: اضبطهما على <code>No</code> — وهو <strong>أفضل من الفراغ</strong> لأنه يجعل القراءة ثنائية لا تحتمل التأويل.</p>
+  <p><span class="lbl">حقول Next Match مخفية شرطياً.</span> لا تظهر إلا عندما <code>Match Found = Yes</code>. لتفريغها: اضبط Yes مؤقتاً ← تظهر ← فرّغها ← أعد No. بلا هذا الالتفاف تبقى قيم قديمة كامنة تُلوّث أي اختبار.</p></div>
+
+  <h3>بايبلاين المشترين</h3>
+  <div class="tw"><table>
+    <tr><th>المرحلة</th><th>الوظيفة</th></tr>
+    <tr><td>Lead In</td><td>دخول العميل لمسار المشترين</td></tr>
+    <tr><td>Call Done — Interests Filled</td><td>ماجد أتمّ المكالمة وملأ الاحتياجات</td></tr>
+    <tr><td><strong>Active — Nurture Running</strong></td><td><strong>زر التشغيل</strong> — تريغر W3</td></tr>
+    <tr><td>Unit Interest</td><td>العميل أبدى اهتماماً بخيار — يشغّل حلقة التحقّق 1</td></tr>
+    <tr><td>Verifying with Owner</td><td>التحقّق من التوفّر مع جهة المشروع</td></tr>
+    <tr><td>Viewing Scheduled</td><td>المعاينة والمتابعة البشرية</td></tr>
+    <tr><td>Deal Closed</td><td>إغلاق الصفقة</td></tr>
+    <tr><td>Lost</td><td>الخسارة — <strong>لا يُنقل العميل إليها تلقائياً بمرور الزمن</strong></td></tr>
+  </table></div>
+
+  <h3>جسر المناطق</h3>
+  <p><code>district_slug</code> حقل SINGLE_OPTIONS بـ41 قيمة، يربط <code>Opportunity ↔ Projects ↔ Property</code>. عُبّئ على <strong>368/368</strong> مشروع وقت الإنشاء (اليوم 424/429)، وعولجت فيه الأخطاء الإملائية والأحياء: <code>Sariyer/Sarıyer</code> · <code>Kadikoy/Kadıköy</code> · <code>Göktürk→eyupsultan</code> · <code>Topkapı→fatih</code> · <code>Halkalı→kucukcekmece</code>. على Property عُبّئ 6/327 فقط — و321 منها <code>location</code> فارغ أصلاً (وحدات بروكر قديمة ناقصة).</p>
+</section>
+
+<!-- ============ ENGINE ============ -->
+<section class="panel" id="p-engine" hidden>
+  <h2>محرّك المطابقة</h2>
+  <p class="lede">خدمة حسابية على Cloudflare بين HighLevel وبيانات المخزون. تقرأ من HighLevel، تطبّق القواعد، تربط النتائج، وتعيد JSON. <strong>لا تحتفظ بقاعدة عملاء مستقلة.</strong></p>
+
+  <div class="tw"><table>
+    <tr><th>البند</th><th>القيمة</th></tr>
+    <tr><td>نقطة النهاية</td><td><code>POST majed-project-matching.majed-karaf.workers.dev/match</code></td></tr>
+    <tr><td>التفويض</td><td><code>Bearer</code> — قيمة مسمّاة، لا تظهر نصاً</td></tr>
+    <tr><td>النسخة النشطة</td><td><code>v3.0.0 · 922430af</code> — <strong>نُشرت ولم تُوثَّق؛ ما تغيّر فيها غير معروف</strong></td></tr>
+    <tr><td>شكل الاستجابة</td><td><strong>متزامن</strong> — يرجّع <code>match_found</code> و<code>next_match_*</code> في جسم الرد فوراً</td></tr>
+    <tr><td>الحالات</td><td><code>MATCHED</code> · <code>NO_MATCH</code> · <code>RESALE_SKIPPED</code> · <code>ERROR</code></td></tr>
+  </table></div>
+
+  <h3>شروط قبول المشروع — بالترتيب</h3>
+  <ul>
+    <li><strong>المنطقة</strong> — تبدأ المطابقة بالمنطقة الدقيقة المطلوبة، مع fallback نصي.</li>
+    <li><strong>نوع الوحدة</strong> — يجب توفّر النوع المطلوب: Studio · 1+1 · 2+1 · 3+1 · 4+1 · Villa.</li>
+    <li><strong>السعر بالدولار</strong> — سعر بداية النوع المطلوب ≤ <code>budget_max</code>. لكل نوع حقل خاص: <code>price_2plus1_usd</code> وهكذا.</li>
+    <li><strong>الأهلية</strong> — الجنسية والإقامة تضيفان فلتر مشاريع مؤهّلة. السكن والاستثمار لا يضيفان فلتراً.</li>
+    <li><strong>عدم التكرار</strong> — استبعاد <code>sent_project_ids</code> و<code>rejected_project_ids</code>.</li>
+    <li><strong>استبعاد الفارغ</strong> — يُستبعد المشروع إذا كان سعر النوع المطلوب فارغاً.</li>
+  </ul>
+  <p>المخرجات: ترتيب من الأرخص للأغلى ← اختيار الأرخص ← ربط idempotent بالـOpportunity (إعادة التشغيل لا تكرّر الروابط).</p>
+
+  <h3>مفاتيح الاستجابة</h3>
+  <p>متاحة في العقد اللاحقة عبر المسار: <code>Custom webhook › &lt;اسم العقدة&gt; › response › &lt;المفتاح&gt;</code> — <strong>في الجذر، بلا غلاف <code>data.</code></strong> (الغلاف الذي يظهر في سجل الـEnrollment من GHL لا من المحرّك).</p>
+  <div class="tw"><table>
+    <tr><th>المفتاح</th><th>المعنى</th></tr>
+    <tr><td><code>status</code></td><td>MATCHED / NO_MATCH / …</td></tr>
+    <tr><td><code>dry_run</code></td><td>🟠 موجود في المنتقي — <strong>قيمته الفعلية لم تُفحص</strong></td></tr>
+    <tr><td><code>matched_count</code> · <code>candidate_count_after_filters</code> · <code>selected_count</code></td><td>أعداد التشخيص</td></tr>
+    <tr><td><code>selected_price_field</code></td><td>أي حقل سعر استُعمل — مثل <code>price_2plus1_usd</code></td></tr>
+    <tr><td><code>remaining_unsent_count</code></td><td>كم مشروع مطابق باقٍ غير مُرسَل</td></tr>
+    <tr><td><code>association_summary</code></td><td><code>{created, already_exists, failed}</code> — المحرّك ينشئ العلاقة بنفسه</td></tr>
+  </table></div>
+  <div class="note ok"><p><span class="lbl">لا عقدة Association في أي workflow.</span> مُثبَت: علاقة أُنشئت بلا أي عقدة ربط، و<code>association_summary.created = 1</code> في تشغيل حقيقي. <strong>لا تُضاف عقدة ⑦.</strong></p></div>
+
+  <h2>منطق المال</h2>
+  <h3>توحيد العملة</h3>
+  <p>المطابقة تقارن الميزانية بسعر موحّد بالدولار، فلكل سعر مصدر حقل USD موازٍ، مع حفظ <code>exchange_rate_used</code> و<code>usd_price_updated_at</code>.</p>
+  <div class="note warn"><p><span class="lbl">تبعية حرجة.</span> إن كانت حقول USD فارغة بسبب فشل الصرف، تكون <strong>المطابقة فارغة بصمت</strong>. ولهذا يجب إثبات محدّث الأسعار قبل الاعتماد على المطابقة — وتغطية USD اليوم <strong>28% فقط</strong>.</p></div>
+
+  <h3>خصم الكاش 15%</h3>
+  <p><strong>عرض تحفيزي في الرسالة فقط، وليس فلتر مطابقة.</strong> إذا بدأ المشروع من 200,000 دولار، تقارن المطابقة بـ200,000 — ولا يُعتبر مشروع أعلى من الميزانية مطابقاً بسبب الخصم.</p>
+
+  <h3>هدف الشراء</h3>
+  <div class="tw"><table>
+    <tr><th>الهدف</th><th>القاعدة</th></tr>
+    <tr><td>سكن</td><td>لا شرط إضافي — المنطقة + النوع + الميزانية</td></tr>
+    <tr><td>استثمار</td><td>لا استبعاد إضافي؛ يُظهر العائد الإيجاري إن كان مسجّلاً</td></tr>
+    <tr><td>إقامة</td><td>مشاريع مؤهّلة للإقامة فقط</td></tr>
+    <tr><td><strong>جنسية</strong></td><td>مشاريع مؤهّلة فقط، <strong>بسقف 400,000 دولار للمجموع</strong> — و<strong>خلط الأنواع مسموح</strong>: يبني المحرّك تركيبة من أكثر من وحدة (1+1 مع 2+1 مثلاً) للوصول للسقف</td></tr>
+  </table></div>
+
+  <h2>محدّث الأسعار</h2>
+  <div class="tw"><table>
+    <tr><th>البند</th><th>القيمة</th></tr>
+    <tr><td>الكرون</td><td><code>0 6 * * 1-5</code> — 6 صباحاً أيام العمل · مؤكّد بالنتيجة</td></tr>
+    <tr><td>السقف</td><td>40 سجل/دورة — <strong>مشترك بين كل المؤهّلين لا مخصّص لفئة</strong></td></tr>
+    <tr><td>قاعدة التحديث</td><td>السجلات الفارغة أو التي مضى عليها 48 ساعة</td></tr>
+    <tr><td>TRY</td><td>السعر ÷ سعر الصرف · يُقرَّب لأقرب دولار</td></tr>
+    <tr><td>USD</td><td>يُنسخ كما هو</td></tr>
+    <tr><td>عند الخطأ</td><td><strong>لا يُمسح سعر سابق ولا يُكتب صفر</strong> — فشل آمن</td></tr>
+    <tr><td>مصدر الصرف</td><td>ليس Binance (يحظر Cloudflare بـ403) — بديل مثل TCMB</td></tr>
+  </table></div>
+  <div class="note ok"><p><span class="lbl">خلل الـ2099 — أُصلح ومُثبَت.</span> 61 مشروعاً كانت تحمل <code>usd_price_updated_at = 2099-01-01</code> (حارس sentinel من تشغيل يدوي)، فقاعدة «حدّث ما مضى عليه 48 ساعة» لا تعتبرها قديمة أبداً — متجمّدة للأبد. كُتب <code>2026-08-01</code> على 61/61، والكرون التالي التقط 16 منها وحدّث سعر الصرف من <code>48.08985</code> إلى <code>48.2179</code>. <strong>التفريغ كان سيكون خطأ</strong> — كان سينقلها لفئة الـ303 الفارغة مجهولة السلوك.</p></div>
+</section>
+
+<!-- ============ LOG ============ -->
+<section class="panel" id="p-log" hidden>
+  <h2>سجل الأعطال والدروس</h2>
+  <p class="lede">كل عطل هنا كان <strong>صامتاً</strong> — يمرّ بلا خطأ ولا سجل أحمر، ولا يُكتشف إلا من شكوى عميل بعد أسابيع. هذا ما يفسّر بطء الإيقاع والإصرار على التحقّق البصري بعد كل خطوة.</p>
+
+  <div class="tl">
+    <div class="ev ok"><div class="d">2026-08-30</div><div class="t">جسر المناطق مكتمل</div><p>368/368 مشروع، مع معالجة الأخطاء الإملائية والأحياء. المطابقة الجغرافية صارت ممكنة.</p></div>
+    <div class="ev ok"><div class="d">2026-09-02</div><div class="t">أول MATCHED حقيقي موثّق</div><p>Mavera Boutique · 232,768 USD · Başakşehir · 2+1 — عبر تريغر حقيقي. المحرّك يعمل.</p></div>
+    <div class="ev crit"><div class="d">2026-09-02</div><div class="t">خلل الـ2099 — مطابقة فارغة بصمت</div><p>61 مشروعاً متجمّدة على سعر صرف قديم بسبب تاريخ حارس. أُصلح ومُثبَت بكرون اليوم التالي.</p></div>
+    <div class="ev crit"><div class="d">2026-09-03</div><div class="t">مفتاحان مفقودان في جسم W3</div><p><code>sent_project_ids</code> و<code>rejected_project_ids</code> لم يكونا يُرسَلان للمحرّك. <strong>المفارقة:</strong> قفل التزامن كله بُني لحماية حقل يُكتب بعناية ثم لا يُرسَل أبداً — 28 يوماً من نفس المشروع.</p></div>
+    <div class="ev brass"><div class="d">2026-09-03</div><div class="t">درس: العقدة التي «لم تُحفظ» كانت محفوظة</div><p>لوحة تُغلق والعقدة لا تظهر. بعد Hard Refresh ظهرت. <strong>لو أُعيد بناؤها لصار حارسان متتاليان يقرآن نفس الشرط</strong> — يبدو كل شيء سليماً والمسار مضاعف.</p></div>
+    <div class="ev crit"><div class="d">2026-09-03</div><div class="t">Send test request ليس أداة تحقّق صالحة</div><p>رجّع 400 على قيم صحيحة وفارغة على السواء — اللوحة لا تربط الفرصة فلا يُحلّ <code>budget_max</code>. <strong>أسقط ثلاث فرضيات متتالية بُنيت عليه</strong>، ومنها تهمة الفاصلة البادئة.</p></div>
+    <div class="ev crit"><div class="d">2026-09-04</div><div class="t">القفل يبقى مرفوعاً على فرع NO</div><p>الفرع ينتهي بـEND بلا Unlock، وW3 كان منشوراً. كل فرصة تدخل الرعاية <strong>تُقفَل نهائياً</strong> — و73% من المخزون خارج المطابقة فهذا المسار الأكثر استعمالاً.</p></div>
+    <div class="ev crit"><div class="d">2026-09-04</div><div class="t">W3 يقرأ من المكان الغلط</div><p>المحرّك رجّع <code>match_found: "Yes"</code> في الاستجابة، والحارس يقرأ حقل الفرصة — والمحرّك لا يكتبه. <strong>وليس سباق 10 ثوانٍ:</strong> رُوقبت 3 دقائق ولم تظهر. الحلّ: القراءة من الاستجابة وحذف الـWait — السباق زال من الجذر.</p></div>
+    <div class="ev crit"><div class="d">2026-09-04</div><div class="t">لا شيء يكتب next_match على الفرصة</div><p>عطل ثانٍ كان مختبئاً تحت الأول: حتى لو عبر الحارس، كانت الرسالة سترسل <strong>بيانات مطابقة قديمة</strong> من W2. أُصلح بعقدة <code>Write Match Result</code>.</p></div>
+    <div class="ev ok"><div class="d">2026-09-04</div><div class="t">الفاصلة البادئة بريئة — بتشغيل حقيقي</div><p>أُرسل <code>,6a95ca37…</code> فرجّع المحرّك مشروعاً مختلفاً (Mavera Residence). المتغيّر الذي اتُّهم أربع مرات وبُنيت عليه ثلاث فرضيات — <strong>بريء</strong>. العقدة لا تُلمس.</p></div>
+    <div class="ev crit"><div class="d">2026-09-05</div><div class="t">عطل الـbinding — الأخطر</div><p>عند نسخ مجموعة، مراجع <code>response</code> تبقى مثبَّتة على الويبهوك الأصلي. و<code>Write Match Result</code> فيها <strong>ستة</strong> حقول لا اثنان — كلها مربوطة بويبهوك المجموعة 1.</p><p><strong>ما كان سيحدث:</strong> كل عميل في المجموعات 2→8 يستلم رسالة سليمة الشكل تحمل اسم ومنطقة وسعر مشروع <em>المجموعة الأولى</em>. <code>match_found</code> صحيح فيمرّ الحارس، والرسالة تُسجَّل <strong>كنجاح</strong>. أُصلح بـ49 عملية.</p></div>
+    <div class="ev ok"><div class="d">2026-09-06</div><div class="t">قناة واتساب — العائق سقط</div><p>أُثبت بدليلين أقوى من رسالة اختبار: رسائل صادرة حقيقية وصلت وقُرئت آلياً، و<strong>مزوّد SMS واحد فقط وهو الافتراضي</strong> — فأي SMS Action تمرّ عليه حكماً بلا مسار بديل.</p></div>
+  </div>
+
+  <div class="note crit"><p><span class="lbl">أثر جانبي أمني — حماية ضمنية سقطت.</span> حتى 2026-09-05 كان التشغيل التجريبي آمناً <em>بحكم عطل القناة</em> — الرسائل تُبنى ولا تصل. <strong>هذه الحماية لم تعد قائمة.</strong> أي تشغيل تحقّق من الآن يرسل واتساب حقيقياً ويحتاج <strong>جهة اتصال اختبار مخصّصة — لا فرصة عميل</strong>.</p></div>
+
+  <h2>قواعد بناء مستخلصة</h2>
+  <div class="tw"><table>
+    <tr><th>القاعدة</th><th>سببها</th></tr>
+    <tr><td>أي عقدة تبدو أنها «لم تُحفظ» ← Hard Refresh وعُدّ العقد قبل أي إعادة بناء</td><td>إعادة البناء التخمينية تُنتج عقداً شبحية مضاعفة لا تُكتشف</td></tr>
+    <tr><td>تقارير التنفيذ تُتحقَّق بالـAPI أو بصرياً — لا تُؤخذ كما هي</td><td>ثلاث دعاوى في يوم واحد لم تطابق السجل</td></tr>
+    <tr><td>النسخ من <strong>المجموعة الأخيرة</strong> لا الأولى</td><td><code>Copy all actions from here</code> تنسخ الشجرة كاملة — النسخ من الأولى ومعها 6 أنتج 12</td></tr>
+    <tr><td><code>#N</code> عدّاد إنشاء لا ترتيب</td><td>التسلسل الفعلي <code>#2 #3 #4 #6 #7 #5 #18 #19</code> غير تصاعدي</td></tr>
+    <tr><td>التحقّق بعدّ العقد: <strong>9 عقد جديدة</strong> لكل لصقة</td><td>«ظهرت Stage Guard» ليست دليلاً على اكتمال النسخة</td></tr>
+    <tr><td>أي تفاعل مع منتقي حقول ← إعادة فتح العقدة والتحقّق بعده</td><td>المنتقي يُدرج قطعة بالضغط دون قصد — حدث فعلاً</td></tr>
+    <tr><td>وجهة <code>Go To</code> يعيد GHL ربطها تلقائياً · مرجع <code>response</code> <strong>لا</strong></td><td>تعميم القاعدة على النوعين هو مصدر عطل الـbinding</td></tr>
+  </table></div>
+
+  <h2>قيود محرّر GHL</h2>
+  <div class="tw"><table>
+    <tr><th>القيد</th><th>الأثر العملي</th></tr>
+    <tr><td>الرابط المباشر للمخطط يعطي صفحة فارغة</td><td>الدخول بالنقر من قائمة Workflows حصراً</td></tr>
+    <tr><td><code>fit-to-screen</code> يُنزل العرض إلى 20%</td><td>عندها <strong>يفقد الكانفس تفاعله كلياً</strong> — العمل عند 69–100%. والانضغاط يحدث عند إعادة التحميل، فلا إعادة تحميل بين اللصقات</td></tr>
+    <tr><td>سجل التراجع لا ينجو من إعادة تحميل الصفحة</td><td>أي تراجع يتم <strong>قبل</strong> أي reload — وهكذا نجح إرجاع 12 مجموعة إلى 6</td></tr>
+    <tr><td>الحفظ تلقائي والنسخة ترتفع مرة للجلسة</td><td>النسخة لا تصلح عدّاداً للتعديلات</td></tr>
+    <tr><td><code>Delete action</code> تبعد بندين عن <code>Copy all actions from here</code></td><td>تحقّق بصرياً قبل كل ضغطة — ضغطة غلط تمحو الـworkflow</td></tr>
+    <tr><td>لا خيار لتغيير وجهة <code>Go To</code> قائمة</td><td>الحذف وإعادة الإنشاء هو المسار الوحيد</td></tr>
+    <tr><td>الضغط على عقدة في Execution logs يفتح لوحة إعدادها</td><td>لا تعرض حالة التنفيذ — رمز حالة الويبهوك لا يُقرأ من هناك</td></tr>
+    <tr><td>وحدة الـWorkflows ترفض الإدخال البرمجي · المحرّر داخل iframe</td><td>البناء يدوي أو عبر وكيل بصري</td></tr>
+  </table></div>
+</section>
+
+<!-- ============ OPEN ============ -->
+<section class="panel" id="p-open" hidden>
+  <h2>ما تبقّى قبل التشغيل الحقيقي</h2>
+  <div class="tw"><table>
+    <tr><th>#</th><th>البند</th><th>الحالة</th><th>لماذا يمنع النشر</th></tr>
+    <tr><td class="num">1</td><td><strong>تشغيل تحقّق</strong> بجهة اتصال اختبار مخصّصة</td><td><span class="pill crit">لم يُنفَّذ</span></td><td>لم تُختبر المجموعات 2→8 بعد إصلاح الـbinding</td></tr>
+    <tr><td class="num">2</td><td><strong>ربط بوت الاستقبال</strong> بنقل المرحلة</td><td><span class="pill crit">غير مربوط</span></td><td>بدونه لا مدخل تلقائي للرعاية ولا توقّف عند الردّ</td></tr>
+    <tr><td class="num">3</td><td>النشر</td><td><span class="pill idle">بعد 1 و2</span></td><td>—</td></tr>
+    <tr><td class="num">4</td><td>تنسيق السعر <code>232768</code> ← <code>232,768</code></td><td><span class="pill warn">تجميلي</span></td><td>يحتاج حقلاً نصياً من المحرّك</td></tr>
+  </table></div>
+
+  <h2>تعارضات وملاحظات بلا حسم</h2>
+
+  <div class="note warn"><p><span class="lbl">١ — إيقاع الإرسال.</span> الـBlueprint: اليوم 0 (خياران) · 3 · 5 · 7 · 14 · 21 · 28 ثم خيار كل 15 يوماً. <strong>المبني: 8 إرسالات بفاصل 4 أيام متساوٍ.</strong> قرار مطلوب — والتغيير الآن أرخص بكثير من بعد النشر.</p></div>
+
+  <div class="note warn"><p><span class="lbl">٢ — عدد الفرص.</span> <code>opportunities/search</code> أعطى <strong>3,626</strong> فرصة بينما التوثيق يذكر <strong>84</strong>. الأرجح أن 84 تخصّ pipeline المبيعات وحده — <strong>لكن الفرق لم يُحسم</strong>، وW3 يُشغَّل بتغيّر المرحلة.</p></div>
+
+  <div class="note warn"><p><span class="lbl">٣ — <code>dry_run</code> في الاستجابة.</span> المنتقي يعرضه ضمن مفاتيح <code>response</code>. هذا <strong>لا ينقض</strong> خلاصة «لا مفتاح تجريبي في الطلب» — العيّنة المحفوظة في العقدة من 31 آب كانت DRY_RUN وهذا مصدر الرعب القديم. لكن يبقى السؤال: <strong>ما القيمة التي يرجّعها فعلياً في تشغيل حيّ؟</strong></p></div>
+
+  <div class="note warn"><p><span class="lbl">٤ — نسخة المحرّك غير موثّقة.</span> النشط <code>922430af</code> والتوثيق كان يقول <code>da81db20</code>. <strong>نسخة نُشرت ولم تُوثَّق، وما تغيّر فيها غير معروف</strong> — وهي على الأرجح سبب توقّف كتابة حقول الفرصة.</p></div>
+
+  <div class="note warn"><p><span class="lbl">٥ — ثغرة كامنة في مسار Resale.</span> الكود يقرأ <code>sent_property_ids</code> عند <code>source = resale</code> — و<strong>لا W2 ولا W3 يرسلانه</strong>. قائمة الاستبعاد فارغة دائماً لعملاء إعادة البيع ← تكرار مشاريع. غير عاجل ما دام المسار معطّلاً (<code>RESALE_SKIPPED</code>)، <strong>لكنه ينفجر يوم يُفعَّل</strong>.</p></div>
+
+  <div class="note"><p><span class="lbl">٦ — نسختا W1 تكمّلان بعضهما.</span> v2 فيها <code>Property Source</code> · v3 فيها مسار البيانات الناقصة ← <strong>دمج لا حذف</strong>. لم يُنفَّذ.</p></div>
+
+  <h2>حواجز الأمان قبل النشر</h2>
+  <ul>
+    <li>لا تعمل المطابقة قبل انتقال الفرصة إلى <code>Active — Nurture Running</code>.</li>
+    <li>لا تبدأ المطابقة إذا كانت الحقول الأساسية ناقصة.</li>
+    <li>لا يُرسل مشروع أعلى من <code>budget_max</code> بسبب خصم الكاش.</li>
+    <li>لا يُعاد إرسال Project ID موجود في Sent أو Rejected.</li>
+    <li>لا يُرسل أي نص فارغ عند عدم وجود نتائج، <strong>ولا يُنقل العميل إلى Lost</strong> — يبقى في Active ويُعاد البحث في الموعد التالي.</li>
+    <li>لا يُرسل W3 رسالتين متزامنتين لنفس الفرصة — قفل التنفيذ المتزامن.</li>
+    <li>أي رد من العميل يوقف الرعاية قبل المعالجة <span class="pill crit">يحتاج W4</span></li>
+    <li>يُراسَل مصدر عرض واحد فقط في كل لحظة.</li>
+    <li>فشل الصرف أو HighLevel لا يمسح سعراً سابقاً ولا يكتب صفراً.</li>
+    <li><strong>كل Workflow يبقى Draft حتى يمرّ باختبار تجريبي موثّق.</strong></li>
+    <li>زر إيقاف (kill-switch) · إشعار لماجد عند أي فشل · إطلاق محدود 5–10 فرص مع مراقبة يومية.</li>
+  </ul>
+
+  <h2>مسرد</h2>
+  <div class="tw"><table>
+    <tr><th>المصطلح</th><th>المعنى في هذا المشروع</th></tr>
+    <tr><td>Canonical field</td><td>الحقل الرسمي الوحيد الذي تعتمد عليه الأتمتة لمعلومة معينة</td></tr>
+    <tr><td>Legacy</td><td>حقل قديم يبقى للتوافق، لكنه ليس مصدر الحقيقة</td></tr>
+    <tr><td>idempotent</td><td>إعادة التنفيذ لا تُنتج تكراراً — روابط أو سجلات مكرّرة</td></tr>
+    <tr><td>Association</td><td>علاقة تربط الطلب بمشروع، أو مشروعاً بجهات العرض</td></tr>
+    <tr><td>Draft</td><td>موجود لكنه غير منشور ولا يعمل تلقائياً على العملاء</td></tr>
+    <tr><td>فشل صامت</td><td>عطل يمرّ بلا خطأ ولا سجل أحمر — يُكتشف من شكوى عميل فقط</td></tr>
+  </table></div>
+</section>
+
+<footer>نظام ماجد كرف — مرجع تشغيلي مبني من دليل البناء وسجلات الجلسات · Location <code>jo8GkEPOGeRVWN5khioH</code></footer>
+</div>
+
+<script>
+const NODES = {
+  supplier:{t:"المورّد — جهة العرض",s:"بروكر · مالك · وكالة · مطوّر",w:"الجهة التي ترسل بيانات مشروع أو عقار لإدخاله في المخزون.",f:"يرسل التفاصيل عبر محادثة — غالباً على عدة رسائل متفرّقة لا رسالة واحدة.",i:"هو نفسه من نراسله لاحقاً في حلقتَي التحقّق. لذلك <strong>ربط المشروع بمصدره ليس ترفاً تنظيمياً</strong> — بدونه لا نعرف من نسأل عن التوفّر والسعر.",st:"مسار قائم"},
+  reception:{t:"وكيل الاستقبال",s:"agent Reception · منشور · 15,793 مسجّل",w:"البوّابة الأولى — يصنّف المُرسِل ويوجّهه للمسار الصحيح.",f:"يميّز بين جهة عرض (broker / owner / agency / Developer) وجهة طلب (مشترٍ)، ويحوّل كلاً لمساره.",i:"<strong>غير مربوط بنقل المرحلة</strong> — وهذا أحد عائقَي النشر. بدونه لا مدخل تلقائي للرعاية، ولا توقّف عند ردّ العميل.",st:"منشور — لكن غير مربوط بـW3"},
+  intake:{t:"وكيل الإدخال",s:"جلسة جمع معلومات",w:"يحوّل رسائل المورّد المتفرّقة إلى سجل Project أو Property منظّم.",f:"لا يُنشئ سجلاً قبل إشارة اكتمال (البروكر يقول «خلصت» أو Tag <code>property-intake-ready</code>). يفصل بيانات المشروع عن الوحدات، ويبحث قبل الإنشاء عبر <code>project_code</code>/<code>property_code</code> منعاً للتكرار، ثم يربط كل Property بمشروعه والمشروع بمورّده.",i:"<strong>ولا يخمّن</strong> — لا العملة ولا المنطقة ولا اسم المشروع. تخمين واحد هنا يلوّث المخزون الذي يبني عليه المحرّك كل قراراته.",st:"مسار مصمَّم"},
+  projects:{t:"Projects — مصدر البحث الافتراضي",s:"429 سجل · 424 منها له district_slug",w:"مشاريع الشركة: أنواع الوحدات، أسعار البداية، الأهلية، المرافق.",f:"لكل نوع وحدة حقل سعر خاص بالليرة وآخر بالدولار: <code>price_2plus1</code> و<code>price_2plus1_usd</code>.",i:"هو مصدر البحث ما لم يكن <code>property_source = Resale</code>. <strong>تغطية أسعار الدولار 28% فقط</strong> — والمحرّك يطابق بالدولار، فالمشاريع بلا سعر USD خارج المطابقة تماماً وبصمت.",st:"جاهز · التغطية ناقصة"},
+  property:{t:"Property — الوحدات وإعادة البيع",s:"327 سجل · 6 منها له district_slug",w:"وحدة فعلية محدّدة أو عقار إعادة بيع بسعر وتوفّر ومواصفات خاصة.",f:"مصدر البحث عند <code>property_source = Resale</code> فقط.",i:"321 سجل منها <code>location</code> فارغ أصلاً (وحدات بروكر قديمة ناقصة) — لذلك جسر المناطق عليها 6/327. <strong>المسار معطّل حالياً</strong> (<code>RESALE_SKIPPED</code>)، وفيه ثغرة كامنة: المحرّك يقرأ <code>sent_property_ids</code> ولا أحد يرسله.",st:"مؤجّل"},
+  priceupd:{t:"محدّث الأسعار",s:"majed-price-updater · كرون 0 6 * * 1-5",w:"Worker مستقل يحوّل أسعار الليرة إلى دولار ويملأ حقول USD.",f:"يحدّث السجلات الفارغة أو التي مضى عليها 48 ساعة، بسقف 40 سجل لكل دورة. يقرّب لأقرب دولار ويحفظ <code>exchange_rate_used</code> و<code>usd_price_updated_at</code>.",i:"<strong>تبعية حرجة:</strong> المحرّك يطابق بالدولار. إن كانت حقول USD فارغة تكون المطابقة فارغة — بلا أي رسالة خطأ. ولهذا يجب إثبات هذا الـWorker <em>قبل</em> الاعتماد على المطابقة.<br><br>وسقف الـ40 <strong>مشترك</strong> بين كل المؤهّلين لا مخصّص لفئة — خذه بالحسبان في أي تقدير للتغطية.",st:"شغّال ومؤكّد بالنتيجة"},
+  engine:{t:"محرّك المطابقة",s:"v3.0.0 · 922430af · Cloudflare Worker",w:"يستقبل شروط الطلب، يبحث في المخزون، ويرجّع أرخص مطابقة غير مُرسَلة.",f:"يفلتر بالمنطقة ثم النوع ثم السعر بالدولار ثم الأهلية، يستبعد المُرسَل والمرفوض، يرتّب من الأرخص، وينشئ العلاقة مع الفرصة بشكل idempotent. <strong>الاستجابة متزامنة</strong> — كل شيء في جسم الردّ فوراً.",i:"هو مكان الحساب كله. <strong>القاعدة الذهبية: AI للّغة لا للحساب</strong> — لا نموذج لغوي يلمس رقماً أو قراراً مالياً.<br><br>🟠 النسخة النشطة <code>922430af</code> <strong>نُشرت ولم تُوثَّق</strong>، وهي على الأرجح سبب توقّف كتابة حقول الفرصة.",st:"يعمل ومُثبَت"},
+  leadin:{t:"Lead In",s:"مرحلة 1",w:"دخول العميل إلى مسار المشترين.",f:"نقطة البداية بعد أن يصنّفه الاستقبال كمشترٍ.",i:"لا مطابقة هنا — الشروط لم تُملأ بعد.",st:"قائمة"},
+  callDone:{t:"Call Done — Interests Filled",s:"مرحلة 2",w:"ماجد أتمّ المكالمة وملأ الاحتياجات في الفرصة.",f:"هنا تُكتب الحقول الثمانية التي يبني عليها المحرّك: الميزانية، المنطقة، النوع، الهدف، المصدر.",i:"<strong>القرار البشري في مكانه الصحيح.</strong> المطابقة لا تعمل على بيانات خمّنها نموذج — تعمل على ما اعتمده ماجد بنفسه.",st:"قائمة"},
+  active:{t:"Active — Nurture Running",s:"زر التشغيل · تريغر W3",w:"المرحلة التي يبدأ عندها كل شيء الآلي.",f:"نقل الفرصة إليها يشغّل W3: القفل يُرفع، حارس المرحلة يسمح، المحرّك يُستدعى، والرسالة تُرسَل.",i:"<strong>هذه هي البوّابة الأمنية الأولى.</strong> لا تعمل المطابقة قبلها إطلاقاً — بحكم التصميم لا بحكم الصدفة. وكل مجموعة من الثماني تعيد فحص هذه المرحلة قبل أن ترسل، حتى لا يستمرّ الإرسال لعميل غادرها.",st:"قائمة ومُختبَرة"},
+  unit:{t:"Unit Interest",s:"مرحلة 4 · تريغر حلقة التحقّق 1",w:"العميل أبدى اهتماماً بخيار محدّد.",f:"الانتقال إليها يشغّل مراسلة جهات العرض للتأكد من التوفّر.",i:"من هنا يتوقّف الإرسال الآلي ويبدأ التحقّق. <strong>W4 هو من ينقل العميل إلى هنا — وهو غير مبنيّ بعد.</strong>",st:"المرحلة قائمة · الأتمتة غائبة"},
+  verify:{t:"Verifying with Owner",s:"مرحلة 5",w:"التحقّق من التوفّر والسعر مع جهة المشروع.",f:"مراسلة جهة واحدة كل مرة، بمهلة 6 ساعات قبل الانتقال للتالية.",i:"هذا ما يمنع أسوأ تجربة ممكنة: عميل يحجز معاينة لعقار <strong>لم يعد موجوداً أو تغيّر سعره</strong>.",st:"يحتاج W5"},
+  viewing:{t:"Viewing Scheduled → Deal Closed",s:"مرحلتان 6 و7",w:"المعاينة والتفاوض والإغلاق.",f:"الأتمتة تتوقّف تماماً ويتسلّم ماجد.",i:"<strong>الأتمتة تعرف أين تقف.</strong> التفاوض والإغلاق قرار بشري بحت.<br><br>وملاحظة على مرحلة Lost: <strong>لا يُنقل إليها العميل تلقائياً بمرور الزمن فقط</strong> — انتهاء 28 يوماً بلا ردّ ليس خسارة.",st:"يحتاج W6"},
+  w1:{t:"W1 — Buyer Matching Entry & Validation",s:"draft · نسختان",w:"بوّابة الجودة قبل المطابقة.",f:"يبدأ عند <code>Active — Nurture Running</code> ويتحقّق من اكتمال <code>budget_max</code> و<code>budget_currency</code> و<code>location_interest</code> و<code>property_type</code> و<code>client_goal</code>. إن نقصت البيانات يمنع المطابقة وينبّه ماجد؛ وإلا يوجّه إلى Projects أو Resale.",i:"يمنع أسوأ حالة: مطابقة تعمل على بيانات ناقصة فترجع فارغة أو خاطئة بصمت. <strong>مثال محقّق: <code>budget_max</code> صفر يجعل المحرّك يرفض الطلب كاملاً.</strong><br><br>⚠️ نسختان بنفس الاسم <strong>تكمّلان بعضهما</strong>: v2 فيها Property Source · v3 فيها مسار البيانات الناقصة ← <strong>دمج لا حذف</strong>.",st:"draft · يحتاج دمجاً"},
+  w2:{t:"W2 — Project Matching",s:"draft · 12312c5d-8cdf-48de-a621-6557e0a6b4f3",w:"يرسل شروط الطلب للمحرّك ويربط النتائج.",f:"عقدة Custom Webhook بجسم يحمل المفاتيح التسعة، ثم ربط أرخص مطابقة بالفرصة.",i:"هو الذي أنتج أول MATCHED حقيقي موثّق (Mavera Boutique · 232,768 USD). <strong>وجسمه كان المرجع الذي كُشف به نقص مفتاحين في W3</strong> — وبدونهما كان العميل سيستلم نفس المشروع 28 يوماً.",st:"draft — أُعيد من published بعد اكتشاف نشره بلا اختبار"},
+  w3:{t:"W3 — Options Delivery & Nurture",s:"draft · v40 · 8 مجموعات",w:"يرسل الخيارات وفق الجدول ويسجّل ما أُرسل.",f:"ثماني مجموعات متطابقة بفاصل 4 أيام. كل مجموعة: حارس مرحلة ← نداء المحرّك ← كتابة النتيجة ← حارس مطابقة ← إرسال أو انتظار.",i:"<strong>هو الطبقة التي استهلكت معظم العمل</strong> — لأن كل أعطالها كانت صامتة. راجع تبويب «W3 عقدة بعقدة» للتفصيل الكامل.",st:"مكتمل البناء · لم يُنشر"},
+  w4:{t:"W4 — Customer Response",s:"غير موجود",w:"يوقف الرعاية عند أي ردّ ويصنّفه.",f:"رفض ← يضيف إلى <code>rejected_project_ids</code> ويرسل التالي. اهتمام ← ينقل إلى <code>Unit Interest</code>.",i:"<strong>غيابه هو السبب الحقيقي وراء <code>Stop on response = OFF</code> في W3.</strong> بدونه: عميل يردّ «مهتم» ويستمرّ يستقبل خيارات جديدة كل 4 أيام كأن شيئاً لم يكن — وهي تجربة تُفقد الثقة فوراً.",st:"🔴 غير موجود"},
+  w5:{t:"W5 — Availability Verification",s:"غير موجود",w:"حلقة التحقّق 1 — مراسلة جهات المشروع بالتتابع.",f:"جهة واحدة كل مرة، 6 ساعات مهلة، ثم التالية. عند التأكيد: تتوقّف البقية ويُشعَر ماجد ويُبلَغ العميل.",i:"بدونه يبقى احتمال أن نرسل عقاراً غير متوفّر أو بسعر قديم. <strong>النص المعتمد عند البديل: «الخيار السابق لم يعد متاحاً، لذلك جهّزنا لك بديلاً مناسباً.»</strong>",st:"🔴 غير موجود"},
+  w6:{t:"W6 — Viewing & Human Handoff",s:"غير موجود",w:"يوقف الأتمتة ويسلّم لماجد.",f:"المعاينة والتفاوض والإغلاق.",i:"وظيفته الأهم <strong>أن يوقف</strong> — أتمتة لا تعرف أين تنتهي أخطر من غياب الأتمتة.",st:"🔴 غير موجود"},
+  loop1:{t:"حلقة التحقّق 1 — عند الاهتمام",s:"حدثية · تشتغل عند Unit Interest",w:"تتأكّد من توفّر العقار لحظة اهتمام العميل به.",f:"تقرأ جهات العرض المرتبطة بالمشروع عبر Associations (لا تنشئ جهة جديدة)، وتراسل واحدة كل مرة بمهلة 6 ساعات. عند التأكيد تتوقّف البقية ويُشعَر ماجد. إذا انتهت كل الجهات دون ردّ: يُشعَر ماجد، ويعود العميل إلى Active ويُرسَل له البديل فوراً.",i:"<strong>مراسلة جهة واحدة في كل لحظة</strong> قاعدة أمان مقصودة — مراسلة الكل دفعة واحدة تُحرق العلاقة مع المورّدين وتُنتج ردوداً متضاربة.",st:"يحتاج W5"},
+  loop2:{t:"حلقة التحقّق 2 — الدورية",s:"مجدولة",w:"تُبقي المخزون كله طازجاً، لا المشاريع التي سأل عنها عميل فقط.",f:"تفحص ما لم يُؤكَّد توفّره مؤخراً بحسب <code>Availability Checked At</code>، وتراسل جهة العرض لتأكيد التوفّر والسعر، ثم تحدّث — <strong>وتوقف أي عقار غير مؤكّد حتى لا يُرسَل</strong>.",i:"قاعدة النضارة: خلال 72 ساعة = حديث · أقدم = يحتاج تأكيداً · بلا تاريخ = غير مؤكّد. <strong>لا يُقال «متوفّر الآن» إلا إذا كانت البيانات حديثة فعلاً.</strong><br><br>مفتوح: كل كم نراسل؟ وعلى أي قناة؟",st:"مصمَّمة · غير مبنيّة"},
+
+  stageguard:{t:"Stage Guard",s:"If/Else · أول عقدة في كل مجموعة",w:"يفحص هل الفرصة ما زالت في <code>Active — Nurture Running</code>.",f:"فرع Active يكمل للمحرّك · فرع None يذهب إلى Unlock ثم END.",i:"<strong>موجود في كل مجموعة من الثماني، لا مرة واحدة في البداية.</strong> السبب: التسلسل يمتدّ 28 يوماً و<code>Stop on response = OFF</code>. بلا إعادة الفحص، العميل الذي حجز معاينة أو انسحب أو اشترى <strong>يستمرّ يستقبل عروضاً لأسابيع</strong>.",st:"✅ في كل المجموعات"},
+  webhook:{t:"Custom Webhook — نداء المحرّك",s:"#2 · #3 · #4 · #6 · #7 · #5 · #18 · #19",w:"يرسل شروط الطلب إلى محرّك المطابقة ويستقبل النتيجة.",f:"POST بجسم يحمل تسعة مفاتيح، وتفويض <code>Bearer</code> مخزَّن كقيمة مسمّاة. <code>Save response from this Webhook</code> مفعّل — ولهذا تتاح مفاتيح الاستجابة في العقد اللاحقة.",i:"<code>#N</code> <strong>عدّاد إنشاء لا ترتيب</strong> — التسلسل الفعلي غير تصاعدي. <strong>ويبهوك كل مجموعة يُقرأ من داخلها، ولا يُستنتج من موقعها أبداً.</strong><br><br>⛔ لا تضغط <code>Test again</code> ولا <code>Send test request</code> — اللوحة لا تربط الفرصة فترجّع 400، وقد تكتب فوق العيّنة المحفوظة التي يُبنى منها منتقي الحقول.",st:"8 عقد · مربوطة"},
+  writematch:{t:"Write Match Result",s:"Update Opportunity · 6 حقول",w:"يكتب نتيجة المحرّك على حقول الفرصة.",f:"ستة حقول من الاستجابة: <code>match_found</code> · <code>next_match_id</code> · <code>next_match_name</code> · <code>next_match_type</code> · <code>next_match_price</code> · <code>next_match_district</code>.",i:"<strong>وُجدت لأن المحرّك لا يكتب هذه الحقول.</strong> بدونها كانت الرسالة سترسل بيانات مطابقة قديمة من W2.<br><br>🔴 <strong>وهنا كان أخطر عطل في المشروع:</strong> عند النسخ بقيت الحقول الستة مربوطة بويبهوك المجموعة الأولى. كل عميل في المجموعات 2→8 كان سيستلم رسالة سليمة الشكل تحمل <strong>مشروع المجموعة الأولى</strong> — و<code>match_found</code> صحيح فيمرّ الحارس وتُسجَّل الرسالة كنجاح. أُصلح ضمن 49 عملية.",st:"✅ مربوطة في الثماني"},
+  matchguard:{t:"Match Guard",s:"If/Else · response › match_found = Yes",w:"يقرّر: نرسل أم ننتظر الجولة التالية.",f:"يقرأ <strong>من استجابة الويبهوك مباشرةً</strong> لا من حقل الفرصة.",i:"<strong>هذا القرار ألغى سباق التزامن من الجذر.</strong> التصميم القديم كان ينتظر 10 ثوانٍ ثم يقرأ حقل الفرصة — والمحرّك لا يكتبه أبداً، فكان يقرأ قيمة قديمة أو فارغة. القراءة من الاستجابة بيانات في الذاكرة من نفس الخطوة: <strong>لا انتظار ولا سباق</strong>.<br><br>وعند تغيير نوع الحقل يمسح GHL المُشغّل والقيمة تلقائياً — يجب إعادة ضبط <code>Is</code> و<code>Yes</code>.",st:"✅ يقرأ الاستجابة"},
+  sms:{t:"SMS — رسالة واتساب",s:"فرع YES",w:"الرسالة الفعلية التي يستلمها العميل.",f:"تحمل الاسم والمنطقة والنوع والسعر من حقول الفرصة التي كتبتها <code>Write Match Result</code> قبلها مباشرةً.<br><br><code dir='rtl' style='display:block;padding:8px;white-space:pre-wrap;line-height:1.9'>مرحبا {الاسم} 👋\nلقيتلك خيار عقاري بيناسب طلبك:\n📄 {اسم المشروع}\n📍المنطقة: {المنطقة}\n🏡 النوع: {النوع}\n💰 السعر: يبدأ من {السعر} دولار\nبيهمّك تفاصيل أكثر أو تحجز معاينة؟ ردّ علينا ومستشارنا بيتواصل معك مباشرة.</code>",i:"النص <strong>دعوة للردّ لا مكالمة فورية</strong> — وهذا ما يبرّر توسيع نافذة الإرسال إلى 09:00–21:00 و7 أيام: بوت الاستقبال منشور ويلتقط الردّ خارج الدوام.<br><br>🟡 السعر يظهر <code>232209</code> بلا فاصل آلاف. تحسين مؤجّل يحتاج حقلاً نصياً من المحرّك.",st:"✅ يعمل · القناة موصولة"},
+  updateopp:{t:"Update Opportunity",s:"فرع YES · بعد الإرسال",w:"يسجّل المشروع المُرسَل في قائمة الاستبعاد.",f:"يضيف على <code>Sent Project IDs</code>: القيمة الحالية ثم فاصلة ثم <code>Next Match ID</code>.",i:"<strong>هو ما يمنع إرسال نفس المشروع ثماني مرات.</strong> والمحرّك يقرأ هذه القائمة ويستبعدها في الجولة التالية.<br><br>✅ <strong>الفاصلة البادئة بريئة — مُثبَت بتشغيل حقيقي.</strong> القيمة الأولى تنتج <code>,abc</code> والمحرّك يتعامل معها سليماً (<code>.filter(Boolean)</code>). اتُّهمت أربع مرات وبُنيت عليها ثلاث فرضيات، وكانت بريئة. <strong>العقدة لا تُلمس — تعديل عقدة تعمل خطر بلا مقابل.</strong>",st:"✅ تعمل · لا تُلمس"},
+  goto:{t:"Go to — فرع NO",s:"قفزة إلى Wait المجموعة نفسها",w:"يُكمل الرعاية عند عدم وجود مطابقة، بدل إنهائها.",f:"يقفز إلى عقدة <code>Wait</code> الواقعة على فرع YES من نفس المجموعة.",i:"<strong>ضرورة بنيوية لا تحسين:</strong> في GHL الـworkflow شجرة — فرعان منفصلان لا يعودان إلى عقدة واحدة. بدون هذه القفزة كان لازماً نسخ كل السلسلة المتبقّية على الفرعين — انفجار أُسّي مستحيل على ثماني مجموعات.<br><br>وبدونه أصلاً <strong>تتوقّف الرعاية عند أول لا-تطابق — و73% من المخزون خارج المطابقة، فهذا المسار هو الأكثر استعمالاً.</strong><br><br>📌 GHL يعيد ربط وجهة <code>Go To</code> تلقائياً داخل النسخة — بخلاف مرجع <code>response</code>. <strong>تعميم القاعدة على النوعين هو مصدر عطل الـbinding.</strong>",st:"✅ 8 عقد · كل واحدة لمجموعتها"},
+  wait:{t:"Wait 4 days",s:"For a set period of time",w:"الفاصل بين كل إرسالين.",f:"أربعة أيام × 7 فواصل = 8 إرسالات تنتهي في اليوم 28 بالضبط.",i:"⚠️ <strong>تعارض غير محسوم:</strong> الـBlueprint يحدّد جدولاً غير منتظم (0 · 3 · 5 · 7 · 14 · 21 · 28 ثم كل 15 يوماً). المبني فاصل متساوٍ. قرار مطلوب — والتغيير الآن أرخص من بعد النشر.<br><br>🔴 وإذا اختُصرت المدّة للاختبار: <strong>أعِدها إلى 4 أيام بعده.</strong>",st:"✅ 8 عقد"},
+  l1:{t:"L1 — Nurture Active?",s:"أول عقدة بعد التريغر",w:"يمنع تشغيل نسختين متزامنتين على نفس الفرصة.",f:"إذا كان <code>nurture_active = Yes</code> ← END فوراً. وإلا ← L2.",i:"<strong>لا يفكّ القفل عند الخروج</strong> — وهذا مقصود: نسخة أخرى تعمل وتحمله، وفكّه هنا يكسر حمايتها.<br><br>والحاجة إليه حقيقية: <code>Allow re-entry = ON</code>، فالعميل قد يُنقل للمرحلة مرتين بسرعة فيستقبل رسالتين متزامنتين.",st:"✅ مبني"},
+  l2:{t:"L2 — Set Nurture Active = Yes",s:"رفع القفل",w:"يعلن أن رعاية تعمل على هذه الفرصة الآن.",f:"يكتب <code>Yes</code> على حقل <code>nurture_active</code> ثم يكمل إلى Stage Guard.",i:"القفل يُرفع <strong>مرة واحدة</strong> عند الدخول ويبقى مرفوعاً طوال الـ28 يوماً — لأن التسلسل كله رعاية واحدة مستمرّة.",st:"✅ مبني"},
+  unlock:{t:"Unlock — Set Nurture Active = No",s:"فكّ القفل",w:"يعيد الفرصة قابلة للدخول في رعاية جديدة.",f:"يكتب <code>No</code> على <code>nurture_active</code>.",i:"<strong>كل مخرج يجب أن يمرّ به</strong> — عدا مخرج L1 (نسخة أخرى تحمل القفل).<br><br>🔴 <strong>عطل محقّق:</strong> فرع NO كان ينتهي بـEND بلا فكّ قفل، وW3 كان منشوراً. كل فرصة تدخل الرعاية كانت تُقفَل <strong>نهائياً</strong> ولا تعود تدخلها أبداً — فشل صامت تام. أُصلح.",st:"✅ في كل مجموعة"},
+  endunlock:{t:"Go to — Unlock (End)",s:"نهاية السلسلة",w:"يفكّ القفل بعد آخر إرسال في اليوم 28.",f:"قفزة من بعد آخر <code>Wait</code> إلى عقدة <code>Unlock</code>.",i:"بدونه كانت المجموعة الثامنة تنتهي <code>Wait → END</code> والعميل يبقى <code>nurture_active = Yes</code> <strong>للأبد</strong> — فلا يدخل الرعاية مجدداً ولو عاد بطلب جديد. <strong>نفس عطل المجموعة الأولى لكن على نهاية التسلسل.</strong>",st:"✅ مبني"}
+};
+
+function render(target, key){
+  const n = NODES[key]; if(!n) return;
+  target.innerHTML =
+    '<div class="dhead"><h3 class="dt">'+n.t+'</h3><span class="pill brass">'+n.st+'</span><p class="dsub">'+n.s+'</p></div>'+
+    '<div class="dgrid">'+
+      '<div class="dblock"><p class="bl">ما هي</p><p>'+n.w+'</p></div>'+
+      '<div class="dblock"><p class="bl">وظيفتها</p><p>'+n.f+'</p></div>'+
+      '<div class="dblock"><p class="bl">لماذا تهمّ</p><p>'+n.i+'</p></div>'+
+    '</div>';
+}
+
+const d1 = document.getElementById('detail'), d2 = document.getElementById('detail2');
+render(d1,'engine'); render(d2,'matchguard');
+
+document.querySelectorAll('.node').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const panel = b.closest('section');
+    const target = panel.id==='p-w3' ? d2 : d1;
+    panel.querySelectorAll('.node').forEach(x=>x.setAttribute('aria-current','false'));
+    b.setAttribute('aria-current','true');
+    render(target, b.dataset.n);
+  });
+});
+
+const tabs=[...document.querySelectorAll('.tab')];
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.setAttribute('aria-selected', x===t ? 'true':'false'));
+  document.querySelectorAll('section.panel').forEach(s=>s.hidden = (s.id!=='p-'+t.dataset.p));
+  window.scrollTo({top:0,behavior:'instant'});
+}));
+
+const btn=document.getElementById('themebtn');
+btn.addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme');
+  const dark = cur ? cur==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.setAttribute('data-theme', dark ? 'light':'dark');
+});
+</script>
